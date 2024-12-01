@@ -1,0 +1,56 @@
+﻿@using RackSwip.ViewModels.Edificio
+@model CreateEdificioViewModel
+
+@{
+}
+
+
+<div class="d-flex justify-content-between">
+    <h1>Agregar Edificio</h1>
+    <a class="d-flex align-items-center gap-2 text-secondary fs-4" asp-action="Index">
+        Regresar
+    </a>
+</div>
+
+<form method="post" asp-action="Create" enctype="multipart/form-data" class="w-100 my-4 d-flex flex-column mx-auto gap-4">
+    <div class="d-flex flex-column gap-4 mb-4 align-items-center">
+        <div class="w-50">
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label fs-5"></label>
+                <input asp-for="Nombre" type="text" class="form-control">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w-50">
+            <div class="mb-3">
+                <label asp-for="Ubicacion" class="form-label fs-5"></label>
+                <input asp-for="Ubicacion" type="text" class="form-control">
+                <span asp-validation-for="Ubicacion" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w-50 text-center">
+            <p class="fs-4">
+                Imagen Edificio:
+            </p>
+            <span asp-validation-for="FotoUrl" class="text-danger"></span>
+            <label asp-for="FotoUrl" class="w-100 h-100 d-flex justify-content-center" role="button">
+                <div id="fotoLabel" class="d-flex flex-column align-items-center justify-content-center h-100 text-secondary">
+                    <i class="fs-1 bi-cloud-upload"></i>
+                    <span>
+                        Subir Imagen
+                    </span>
+                </div>
+                <img style="object-fit: fill"
+                     class="d-none shadow" width="200px" height="200px" id="fotoPreview" src="" alt="Foto Partido" />
+            </label>
+            <input style="visibility:hidden; position:absolute;" asp-for="FotoUrl" type="file" accept=".jpg,.jpeg,.svg,.png" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary d-block mx-auto px-4 py-2 fw-bold">
+        Guardar
+    </button>
+</form>
+
+@section Scripts{
+    <script src="~/js/uploadImages.js"></script>
+}
